@@ -2,7 +2,7 @@ const svgWidth = 960
 const svgHeight = 500
 
 let margin = {
-  top: 20,
+  top: 30,
   right: 40,
   bottom: 80,
   left: 100
@@ -97,7 +97,7 @@ function renderCircles(circlesGroup, newXScale, currentSelection) {
 
     let labelsGroup = chartGroup
       .append("g")
-      .attr("transform", `translate(${width / 2}, ${height + 20})`)
+      .attr("transform", `translate(${width / 2}, ${height + 30})`)
 
     labelsGroup
       .append("text")
@@ -121,8 +121,17 @@ function renderCircles(circlesGroup, newXScale, currentSelection) {
       .attr("y", 0 - margin.left)
       .attr("x", 0 - height / 2)
       .attr("dy", "1em")
-      .classed("axis-text", true)
+      .classed("active", true)
       .text("Smokes")
+
+    chartGroup
+      .append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 20 - margin.left)
+      .attr("x", 0 - height / 2)
+      .attr("dy", "1em")
+      .classed("inactive", true)
+      .text("No Health Insurance")
 
     // Crate an event listener to call the update functions when a label is clicked
     labelsGroup.selectAll("text").on("click", function() {
